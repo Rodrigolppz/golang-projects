@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"time"
 )
 
@@ -28,9 +29,33 @@ func AddTask(tasks []Task, description string) []Task {
 		ID:          newID,
 		Description: description,
 		CreatedAt:   time.Now(),
+		IsComplete:  false,
 	}
 
 	tasks = append(tasks, newtask)
+
+	return tasks
+
+}
+
+func completetask(tasks []Task, ID int) []Task {
+
+	var taskID int
+
+	if len(tasks) == 0 {
+
+		fmt.Println("Task list is empty")
+
+	} else {
+
+		for i, v := range tasks {
+			if taskID == ID {
+				tasks = append(tasks)
+
+			}
+		}
+
+	}
 
 }
 
