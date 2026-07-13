@@ -40,22 +40,26 @@ func AddTask(tasks []Task, description string) []Task {
 
 func completetask(tasks []Task, ID int) []Task {
 
+	found := false
+
 	if len(tasks) == 0 {
 
 		fmt.Println("Task list is empty")
 
 	} else {
-
-		for i, v := range tasks {
-			if ID == v.ID {
-				v.IsComplete = true
-
-			} else {
-				continue
+		for i := range tasks {
+			if ID == tasks[i].ID {
+				tasks[i].IsComplete = true
+				found = true
 			}
 		}
-
 	}
+
+	if found == false {
+		fmt.Println("This task does not exist")
+	}
+
+	return tasks
 }
 
 func main() {
