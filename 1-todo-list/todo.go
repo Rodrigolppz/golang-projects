@@ -40,8 +40,6 @@ func AddTask(tasks []Task, description string) []Task {
 
 func completetask(tasks []Task, ID int) []Task {
 
-	var taskID int
-
 	if len(tasks) == 0 {
 
 		fmt.Println("Task list is empty")
@@ -49,14 +47,15 @@ func completetask(tasks []Task, ID int) []Task {
 	} else {
 
 		for i, v := range tasks {
-			if taskID == ID {
-				tasks = append(tasks)
+			if ID == v.ID {
+				v.IsComplete = true
 
+			} else {
+				continue
 			}
 		}
 
 	}
-
 }
 
 func main() {
