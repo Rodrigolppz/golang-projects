@@ -62,6 +62,20 @@ func completetask(tasks []Task, ID int) []Task {
 	return tasks
 }
 
+func deletetask(tasks []Task, ID int) []Task {
+
+	if len(tasks) == 0 {
+		fmt.Println("This list is empty")
+	} else {
+		for i := range tasks {
+			if ID == tasks[i].ID {
+
+			}
+		}
+	}
+
+}
+
 func main() {
 
 }
