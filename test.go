@@ -1,29 +1,17 @@
 package main
 
-import "fmt"
-
-type house struct {
-	city string
-	ID   int
-}
-
-func newHouse(city string) house {
-
-	h := house{
-		city: city,
-		ID:   0,
-	}
-
-	return h
-
-}
-
 func main() {
 
-	houses := []string{}
+	subject := "stone"
+	candidates := []string{"snow", "stone", "tones", "banana", "tons", "notes", "Seton"}
 
-	houses = append(houses, "name")
+	for i, _ := range candidates {
 
-	fmt.Println(houses)
+		if len(subject) == len(candidates[i]) {
+			return true
+
+		}
+
+	}
 
 }

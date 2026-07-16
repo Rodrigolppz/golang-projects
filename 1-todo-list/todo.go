@@ -64,18 +64,72 @@ func completetask(tasks []Task, ID int) []Task {
 
 func deletetask(tasks []Task, ID int) []Task {
 
+	found := false
+
 	if len(tasks) == 0 {
 		fmt.Println("This list is empty")
 	} else {
 		for i := range tasks {
 			if ID == tasks[i].ID {
-
+				tasks = append(tasks[:i], tasks[i+1:]...)
+				found = true
+				break
 			}
 		}
 	}
 
+	if !found {
+		fmt.Println("This task does not exist.")
+	}
+
+	return tasks
+
+}
+
+func listalltask(tasks []Task) []Task {
+
+	if len(tasks) == 0 {
+		fmt.Println("This list is empty")
+	} else {
+		fmt.Println(tasks)
+	}
+
+	return tasks
+
+}
+
+func listcompletetasks(tasks []Task) []Task {
+
+	if len(tasks) == 0 {
+		fmt.Println("This list is empty")
+	} else {
+		for i := range tasks {
+			if tasks[i].IsComplete == true {
+				fmt.Println(tasks[i])
+			}
+		}
+	}
+
+	return tasks
 }
 
 func main() {
+	tasks := []Task{}
 
+	tasks = AddTask(tasks, "Estudar Go")
+	tasks = AddTask(tasks, "Arrumar a mesa")
+	tasks = AddTask(tasks, "Ler documentação")
+
+	fmt.Println("Depois de adicionar:")
+	listalltask(tasks)
+
+	tasks = completetask(tasks, 2)
+
+	fmt.Println("Depois de completar a task 2:")
+	listalltask(tasks)
+
+	tasks = deletetask(tasks, 1)
+
+	fmt.Println("Depois de deletar a task 1:")
+	listalltask(tasks)
 }
